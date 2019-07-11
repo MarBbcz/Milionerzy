@@ -1,26 +1,339 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import './App.scss';
+import { HashRouter as Router, NavLink, Route, Switch } from "react-router-dom";
+import logo from "./images/logo.png";
+import ask from "./images/ask.gif";
+import askUsed from "./images/askUsed.png";
+import phone from "./images/phone.gif";
+import phoneUsed from "./images/phoneUsed.png";
+import half from "./images/half.gif";
+import halfUsed from "./images/halfUsed.png";
+import person from "./images/person.png";
+import {MainThemePlay, CorrectAnswerPlay, WrongAnswerPlay, FinalAnswerPlay} from "./player.js";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+const Home = () => {
+    return (
+        <div className="main">
+            <header className="mainHeader">
+                <img src={logo} alt="" className="mainLogo"/>
+            </header>
+            <section>
+                    <NavLink style={{textDecoration: "none"}} to="/game">
+                        <button className="playBtn">Graj</button>
+                    </NavLink>
+            </section>
+            <footer> </footer>
+        </div>
+    )
+};
+
+class Game extends Component {
+    state = {
+        data: false,
+        qNumber: 0,
+        disable: false,
+        wasUsed1: false,
+        wasUsed2: false,
+        wasUsed3: false,
+        fiftyImage: half,
+        phoneImage: phone,
+        askImage: ask,
+        hideAnswers: "",
+        showBar: "",
+        friendsAnswer: "",
+        showAudience: "",
+        percentageA: 50,
+        percentageB: 50,
+        percentageC: 50,
+        percentageD: 50,
+        currentQuestionData: null
+
+
+    };
+
+
+    loadData() {
+        this.setState({loading: true}, () => {
+            fetch(`http://localhost:3001/questions`)
+                .then(bigObj => bigObj.json())
+                .then(dataFromJson => this.setState({ data: dataFromJson, loading: false }, this.chooseCurrentQuestion))
+                .catch(error => console.log(error));
+        });
+
+    }
+
+    chooseCurrentQuestion = () => {
+        const currentQuestionsSet = this.state.data[this.state.qNumber];
+        this.setState({
+            currentQuestionData: currentQuestionsSet[Math.floor(Math.random()*currentQuestionsSet.length)]
+        });
+    };
+
+    handleOnClick = (e) => {
+        const {data} = this.state;
+
+       { this.setState({disable: true});
+
+           if (e.target.name === this.state.currentQuestionData.correctAnswer) {
+            console.log("OK");
+           e.target.classList.add("selected");
+           e.persist(this.timeoutId = setTimeout(() => {
+               e.target.classList.remove("selected");
+               e.target.classList.add("correct");
+               CorrectAnswerPlay().play();
+           }, 3000));
+           e.persist(this.timeoutId = setTimeout(() => {
+              this.setState(prevState => {
+                  return {qNumber: prevState.qNumber + 1}
+              }, this.chooseCurrentQuestion);
+               e.target.classList.remove("correct");
+               this.setState({disable: false});
+               this.setState({hideAnswers: ""});
+               this.setState({showBar: ""});
+               this.setState({showAudience: ""});
+               CorrectAnswerPlay().stop();
+
+               if (this.state.qNumber === 12) {
+                   this.props.history.push("/result/1 000 000zł");
+               }
+
+           }, 4500));
+
+
+
+
+
+        } else {
+           console.log("jesteś frajerem");
+           e.target.classList.add("selected");
+           e.persist(this.timeoutId = setTimeout(() => {
+               e.target.classList.remove("selected");
+               e.target.classList.add("wrong");
+               WrongAnswerPlay().play();
+           }, 3000));
+           this.timeoutId = setTimeout(() => {
+               this.setState({disable: false});
+               const amounts = ["0zł", "0zł", "1 000zł", "1 000zł", "1 000zł", "1 000zł", "1 000zł", "40 000zł", "40 000zł", "40 000zł", "40 000zł", "40 000zł"];
+               this.props.history.push(`/result/${amounts[this.state.qNumber]}`)
+
+           }, 4500)
+
+       }
+
+       }
+
+    };
+
+
+    fiftyFiftyClick = () => {
+        this.setState({wasUsed1: true});
+        this.setState({fiftyImage: halfUsed});
+
+        const {correctAnswer, answers} = this.state.currentQuestionData;
+        const answerCopy = {...answers};
+
+        delete answerCopy[correctAnswer];
+        const onlyBadAnswers = Object.keys(answerCopy);
+        onlyBadAnswers.splice(Math.floor(Math.random() * onlyBadAnswers.length), 1);
+        console.log(onlyBadAnswers);
+        this.setState({hideAnswers: onlyBadAnswers});
+
+    };
+
+
+    componentDidMount() {
+        this.loadData()
+    }
+
+    callFriendClick = () => {
+        this.setState({showBar: "open"});
+        this.setState({showAudience: ""});
+        this.setState({phoneImage: phoneUsed});
+        this.setState({wasUsed2: true});
+
+        const {correctAnswer, answers} = this.state.currentQuestionData;
+        const answerCopy = {...answers};
+
+        delete answerCopy[correctAnswer];
+
+        if (this.state.hideAnswers !== "") {
+            this.state.hideAnswers.forEach(function (el) {
+                delete answerCopy[el];
+            });
+        }
+
+        const onlyBadAnswers = Object.keys(answerCopy);
+
+        const foo = Math.random() * 100;
+        if (foo < 80) // 0-79
+            this.setState({friendsAnswer: this.state.currentQuestionData.correctAnswer});
+        else // 80-99
+            this.setState({friendsAnswer: onlyBadAnswers[Math.floor(Math.random() * onlyBadAnswers.length)]});
+
+    };
+
+    askAudienceClick = () => {
+        this.setState({showAudience: "open"});
+        this.setState({showBar: ""});
+        this.setState({askImage: askUsed});
+        this.setState({wasUsed3: true});
+
+        // const foo = Math.random() * 100;
+
+        if (this.state.currentQuestionData.correctAnswer === "A") {
+
+            this.setState({percentageA: Math.floor(Math.random() * (51)) + 50});
+            this.setState({percentageB: Math.floor(Math.random() * (51))});
+            this.setState({percentageC: Math.floor(Math.random() * (51))});
+            this.setState({percentageD: Math.floor(Math.random() * (51))});
+
+        } else if (this.state.currentQuestionData.correctAnswer === "B") {
+
+            this.setState({percentageB: Math.floor(Math.random() * (51)) + 50});
+            this.setState({percentageA: Math.floor(Math.random() * 51)});
+            this.setState({percentageC: Math.floor(Math.random() * 51)});
+            this.setState({percentageD: Math.floor(Math.random() * 51)});
+
+        } else if (this.state.currentQuestionData.correctAnswer === "C") {
+
+            this.setState({percentageC: Math.floor(Math.random() * (51)) + 50});
+            this.setState({percentageB: Math.floor(Math.random() * 51)});
+            this.setState({percentageA: Math.floor(Math.random() * 51)});
+            this.setState({percentageD: Math.floor(Math.random() * 51)});
+
+        } else if (this.state.currentQuestionDatadata.correctAnswer === "D") {
+
+            this.setState({percentageD: Math.floor(Math.random() * (51)) + 50});
+            this.setState({percentageB: Math.floor(Math.random() * 51)});
+            this.setState({percentageC: Math.floor(Math.random() * 51)});
+            this.setState({percentageA: Math.floor(Math.random() * 51)});
+
+        }
+
+
+    };
+
+
+
+    render() {
+
+        if (!this.state.currentQuestionData) {
+            return null;
+        }
+
+        const { data } = this.state;
+        if (!data) return null;
+        return (
+            <div className="game">
+
+                <section className="lifelines">
+                    <button style={{backgroundColor: "transparent", border: "none", outline: "none"}} onClick={this.askAudienceClick} disabled={this.state.wasUsed3}><img src={this.state.askImage}alt="" className="lifelineIco"/></button>
+                    <button style={{backgroundColor: "transparent", border: "none", outline: "none"}} onClick={this.callFriendClick} disabled={this.state.wasUsed2}><img src={this.state.phoneImage} alt="" className="lifelineIco"/></button>
+                    <button style={{backgroundColor: "transparent", border: "none", outline: "none"}} onClick={this.fiftyFiftyClick} disabled={this.state.wasUsed1}><img src={this.state.fiftyImage} alt="" className="lifelineIco"/></button>
+                    <div className={["friendBubble", this.state.showBar].join(" ")}><img src={person} alt="" className="friendIco"/><p>Wydaje mi się, że poprawna odpowiedź to...</p><p className="frAns">{this.state.friendsAnswer}</p></div>
+                    <div className={["publicBubble", this.state.showAudience].join(" ")}>
+                        <div className="container">
+                            <div className="barContainer" style={{marginLeft: "0"}}>
+                                <div className="bar" style={{height: this.state.percentageA + "%"}}>
+                                </div>
+                            </div>
+                            <div className="barContainer">
+                                <div className="bar" style={{height: this.state.percentageB + "%"}}>
+                                </div>
+                            </div>
+                            <div className="barContainer">
+                                <div className="bar" style={{height: this.state.percentageC + "%"}}>
+                                </div>
+                            </div>
+                            <div className="barContainer">
+                                <div className="bar" style={{height: this.state.percentageD + "%"}}>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="publicAnswers">
+                            <div>A</div>
+                            <div>B</div>
+                            <div>C</div>
+                            <div>D</div>
+                        </div>
+                    </div>
+                </section>
+                <section className="gameSection">
+                    <div className="gameHeader">
+                        <img src={logo} alt="" className="gameLogo"/>
+                    </div>
+                    <div className="questionBox">
+                        {this.state.currentQuestionData.question}
+                    </div>
+                    <div className="answerBoxes">
+
+
+                        <button className="answerBox" name="A" onClick={this.handleOnClick} disabled={this.state.disable}> A. { this.state.hideAnswers.includes("A") ? "" : this.state.currentQuestionData.answers.A}  </button>
+                        <button className="answerBox" name="B" onClick={this.handleOnClick} disabled={this.state.disable}> B. { this.state.hideAnswers.includes("B") ? "" : this.state.currentQuestionData.answers.B}</button>
+                        <button className="answerBox" name="C" onClick={this.handleOnClick} disabled={this.state.disable}> C. { this.state.hideAnswers.includes("C") ? "" : this.state.currentQuestionData.answers.C}</button>
+                        <button className="answerBox" name="D" onClick={this.handleOnClick} disabled={this.state.disable}> D. { this.state.hideAnswers.includes("D") ? "" : this.state.currentQuestionData.answers.D}</button>
+                    </div>
+                </section>
+                <section className="progressSection">
+
+                    <ul className="progressBar">
+                        <li className={this.state.qNumber >= 12 && "successBar"} style={{color: "gold"}}>1 000 000zł</li>
+                        <li className={this.state.qNumber >= 11 && "successBar"}>500 000zł</li>
+                        <li className={this.state.qNumber >= 10 && "successBar"}>250 000zł</li>
+                        <li className={this.state.qNumber >= 9 && "successBar"}>125 000zł</li>
+                        <li className={this.state.qNumber >= 8 && "successBar"}>75 000zł</li>
+                        <li className={this.state.qNumber >= 7 && "successBar"} style={{color: "gold"}}>40 000zł</li>
+                        <li className={this.state.qNumber >= 6 && "successBar"}>20 000zł</li>
+                        <li className={this.state.qNumber >= 5 && "successBar"}>10 000zł</li>
+                        <li className={this.state.qNumber >= 4 && "successBar"}>5 000zł</li>
+                        <li className={this.state.qNumber >= 3 && "successBar"}>2 000zł</li>
+                        <li className={this.state.qNumber >= 2 && "successBar"} style={{color: "gold"}}>1 000zł</li>
+                        <li className={this.state.qNumber >= 1 && "successBar"}>500zł</li>
+                    </ul>
+                </section>
+                <footer> </footer>
+
+            </div>
+        )
+    }
+}
+
+const Result = (props) => {
+    return (
+        <div className="endGame">
+            <div className="resultBoard">
+                <div className="endGameText">
+                    Koniec gry!<br/>
+                    Wygrałeś {props.match.params.amount}
+                </div>
+                <NavLink style={{textDecoration: "none"}} to="/game">
+                    <button className="nextGameBtn">Zagraj ponownie</button>
+                </NavLink>
+            </div>
+
+        </div>
+    )
+
+};
+
+class App extends Component {
+
+    render() {
+    return (
+        <Router>
+          <>
+            <Switch>
+              <Route exact path="/" component={Home}/>
+              <Route path="/game" component={Game}/>
+              <Route path="/result/:amount" component={Result}/>
+            </Switch>
+          </>
+        </Router>
+    )
+  }
 }
 
 export default App;
+

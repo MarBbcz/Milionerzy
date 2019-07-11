@@ -1,0 +1,656 @@
+{
+  "questions": [
+    [
+      {
+        "id": 1,
+        "question": "Na akord można:",
+        "answers":
+        {
+          "A": "pracować",
+          "B": "spać",
+          "C": "śpiewać",
+          "D": "podróżować"
+        },
+        "correctAnswer": "A"
+      },
+      {
+        "id": 1,
+        "question": "Naczynie z sitkiem:",
+        "answers":
+        {
+          "A": "konewka",
+          "B": "łyżka cedzakowa",
+          "C": "maszynka do mięsa",
+          "D": "prysznic"
+        },
+        "correctAnswer": "A"
+      },
+      {
+        "id": 1,
+        "question": "Dokończ tekst piosenki: \"Góralu, czy ci nie żal...\"",
+        "answers":
+        {
+          "A": "...na wódkę wydawać szmal.",
+          "B": "...porzucać lasów i hal.",
+          "C": "...odchodzić od stron ojczystych.",
+          "D": "...regli zostawiać lesistych."
+        },
+        "correctAnswer": "C"
+      },
+      {
+        "id": 1,
+        "question": "Oczy niebieskie, życie królewskie. Oczy czarne, życie...",
+        "answers":
+        {
+          "A": "...na szczycie.",
+          "B": "...bezkarne.",
+          "C": "...w zachwycie.",
+          "D": "...marne."
+        },
+        "correctAnswer": "D"
+      },
+      {
+        "id": 1,
+        "question": "Ile linii metra jest w Warszawie?",
+        "answers":
+        {
+          "A": "1",
+          "B": "2",
+          "C": "3",
+          "D": "4"
+        },
+        "correctAnswer": "B"
+      },
+      {
+        "id": 1,
+        "question": "Ile waży litr chłodnej wody?",
+        "answers":
+        {
+          "A": "10 funtów",
+          "B": "2 dekagramy",
+          "C": "kilogram",
+          "D": "10 uncji"
+        },
+        "correctAnswer": "C"
+      },
+      {
+        "id": 1,
+        "question": "Co zalewa ten, kto nie wylewa za kołnierz?",
+        "answers":
+        {
+          "A": "fundamenty",
+          "B": "ognisko",
+          "C": "zioła",
+          "D": "robaka"
+        },
+        "correctAnswer": "D"
+      },
+      {
+        "id": 1,
+        "question": "Z roboty nie wywala się na:",
+        "answers":
+        {
+          "A": "zielona trawkę",
+          "B": "bruk",
+          "C": "psa urok",
+          "D": "zbity pysk"
+        },
+        "correctAnswer": "C"
+      }
+    ],
+    [{
+      "id": 2,
+      "question": "Czasownik wśród miast.",
+      "answers":
+      {
+        "A": "Ryki",
+        "B": "Przemyśl",
+        "C": "Supraśl",
+        "D": "Myślenice"
+      },
+      "correctAnswer": "B"
+    },
+      {
+        "id": 2,
+        "question": "Nutrikosmetyki:",
+        "answers":
+        {
+          "A": "wytwarza się z nutrii",
+          "B": "wklepujemy w twarz",
+          "C": "zażywamy doustnie",
+          "D": "wczesujemy je we włosy"
+        },
+        "correctAnswer": "C"
+      },
+      {
+        "id": 2,
+        "question": "Tylko jeden z tych to zespół muzyczny. Który?",
+        "answers":
+        {
+          "A": "Grono Padłych Bodżków",
+          "B": "Zastęp Zimnych Żebereg",
+          "C": "Formacja Nieżywych Schabuff",
+          "D": "Kompania Drętwych Polendwidz"
+        },
+        "correctAnswer": "C"
+      },
+      {
+        "id": 2,
+        "question": "Co łączy rowerowa szprycha?",
+        "answers":
+        {
+          "A": "obręcz z dętką",
+          "B": "dętkę z piastą",
+          "C": "piastę z obręczą",
+          "D": "obręcz z widelcem"
+        },
+        "correctAnswer": "C"
+      },
+      {
+        "id": 2,
+        "question": "Ile rodzonych córek miała macocha Kopciuszka w baśni braci Grimm?",
+        "answers":
+        {
+          "A": "dwie",
+          "B": "trzy",
+          "C": "cztery",
+          "D": "pięć"
+        },
+        "correctAnswer": "A"
+      },
+      {
+        "id": 2,
+        "question": "Jakie kwiaty zwykle zachwaszczają pola pszenicy?",
+        "answers":
+        {
+          "A": "konwalie",
+          "B": "chabry",
+          "C": "tulipany",
+          "D": "nasturcje"
+        },
+        "correctAnswer": "B"
+      },
+      {
+        "id": 2,
+        "question": "Pępkowym wita się:",
+        "answers":
+        {
+          "A": "wiosnę",
+          "B": "dziecko",
+          "C": "młodą parę",
+          "D": "nowego pracownika"
+        },
+        "correctAnswer": "B"
+      },
+      {
+        "id": 2,
+        "question": "Który z motoryzacyjnych skrótów dotyczy układu hamulcowego?",
+        "answers":
+        {
+          "A": "ABC",
+          "B": "ABS",
+          "C": "RWD",
+          "D": "RGB"
+        },
+        "correctAnswer": "B"
+      }],
+    [{
+      "id": 3,
+      "question": "11 listopada to rocznica:",
+      "answers":
+      {
+        "A": "wybuchu I wojny światowej",
+        "B": "uchwalenia konstytucji",
+        "C": "odzyskania niepodległości",
+        "D": "powstania listopadowego"
+      },
+      "correctAnswer": "C"
+    },
+      {
+        "id": 3,
+        "question": "Co ma na nogach panczenista?",
+        "answers":
+        {
+          "A": "korki",
+          "B": "narty",
+          "C": "łyżwy",
+          "D": "płetwy"
+        },
+        "correctAnswer": "C"
+      },
+      {
+        "id": 3,
+        "question": "Po stradivariusa sięga skrzypek, a do steinwaya sięga:",
+        "answers":
+        {
+          "A": "harfista",
+          "B": "pianista",
+          "C": "kotlista",
+          "D": "perkusista"
+        },
+        "correctAnswer": "B"
+      },
+      {
+        "id": 3,
+        "question": "Ten owoc podzielony jest na sekcje, wewnątrz których jest masa wypełnionych sokiem pęcherzyków.",
+        "answers":
+        {
+          "A": "wiśnia",
+          "B": "czereśnia",
+          "C": "nektarynka",
+          "D": "mandarynka"
+        },
+        "correctAnswer": "D"
+      }],
+    [{
+      "id": 4,
+      "question": "Migotka to:",
+      "answers":
+      {
+        "A": "prawa komora serca",
+        "B": "trzecia powieka",
+        "C": "mama Muminka",
+        "D": "kierunkowskaz"
+      },
+      "correctAnswer": "B"
+    },
+      {
+        "id": 4,
+        "question": "Zołzy to kobiety o trudnym obyciu, ale też…",
+        "answers":
+        {
+          "A": "te miłe i dobre",
+          "B": "sos po kaszubsku",
+          "C": "choroba źrebiąt",
+          "D": "pasożyty przewodu pokarmowego"
+        },
+        "correctAnswer": "C"
+      },
+      {
+        "id": 4,
+        "question": "Co intercooler chłodzi w samochodzie?",
+        "answers":
+        {
+          "A": "olej",
+          "B": "powietrze",
+          "C": "benzynę",
+          "D": "wodę"
+        },
+        "correctAnswer": "B"
+      },
+      {
+        "id": 4,
+        "question": "Słynna wapienna skała będąca charakterystycznym elementem krajobrazu Doliny Prądnika to:",
+        "answers":
+        {
+          "A": "Łuk Artemidy",
+          "B": "Włócznia Ateny",
+          "C": "Maczuga Herkulesa",
+          "D": "Trójząb Posejdona"
+        },
+        "correctAnswer": "C"
+      }],
+    [{
+      "id": 5,
+      "question": "Która fikcyjna postać nie jest pokemonem?",
+      "answers":
+      {
+        "A": "Arcanine",
+        "B": "Raichu",
+        "C": "Charizard",
+        "D": "Bumblebee"
+      },
+      "correctAnswer": "D"
+    },
+      {
+        "id": 5,
+        "question": "Kto jest mistrzem tego samego oręża, w jakim specjalizowała się mitologiczna Artemida?",
+        "answers":
+        {
+          "A": "Zorro",
+          "B": "Legolas",
+          "C": "Don Kichot",
+          "D": "Longinus Podbipięta"
+        },
+        "correctAnswer": "B"
+      },
+      {
+        "id": 5,
+        "question": "\"Najszybsza kupa złomu\" w galaktyce z sagi \"Gwiezdne wojny\" to:",
+        "answers":
+        {
+          "A": "Orzeł Rebelii",
+          "B": "Sokół Millennium",
+          "C": "Jastrząb Mocy",
+          "D": "Raróg Universe"
+        },
+        "correctAnswer": "B"
+      }],
+    [{
+      "id": 6,
+      "question": "Których zębów mamy najwięcej, jeśli jesteśmy dorośli i mamy wciąż komplet?",
+      "answers":
+      {
+        "A": "siekaczy",
+        "B": "kłów",
+        "C": "trzonowców",
+        "D": "przedtrzonowców"
+      },
+      "correctAnswer": "C"
+    },
+      {
+      "id": 6,
+      "question": "Który z Beatles'ów urodził się jako Richard Starkey?",
+      "answers":
+      {
+        "A": "John Lennon",
+        "B": "Ringo Starr",
+        "C": "Paul McCartney",
+        "D": "George Harrison"
+      },
+      "correctAnswer": "B"
+    },
+      {
+        "id": 6,
+        "question": "Góralskie zabocyć to?",
+        "answers":
+        {
+          "A": "zapomnieć",
+          "B": "zobaczyć",
+          "C": "obrazić się",
+          "D": "zejść z drogi"
+        },
+        "correctAnswer": "A"
+      },
+      {
+        "id": 6,
+        "question": "Któremu ciału niebieskiemu przypisuje się najczęściej istotny wpływ na cykl menstruacyjny?",
+        "answers":
+        {
+          "A": "Słońcu",
+          "B": "Księżycowi",
+          "C": "Wenus",
+          "D": "komecie Halleya"
+        },
+        "correctAnswer": "B"
+      }
+    ],
+    [{
+      "id": 7,
+      "question": "Wafel pieczony z delikatnego ciasta w\nspecjalnych foremkach to:",
+      "answers":
+      {
+        "A": "bajgiel",
+        "B": "andrut",
+        "C": "bakława",
+        "D": "beza"
+      },
+      "correctAnswer": "B"
+    },
+      {
+        "id": 7,
+        "question": "Jakie drzewo chroni w \"Misiu\" Stanisława Barei plebejskiego uciekiniera?",
+        "answers":
+        {
+          "A": "prasłowiańska grusza",
+          "B": "stuletni dąb",
+          "C": "wierzba płacząca",
+          "D": "stuletnia sosna"
+        },
+        "correctAnswer": "A"
+      },
+      {
+        "id": 7,
+        "question": "Co otrzymuje się z surówki w procesie świeżenia?",
+        "answers":
+        {
+          "A": "zdrowy dodatek do schabowego",
+          "B": "tkaninę w kolorze ecru",
+          "C": "stal",
+          "D": "materiał filmowy do montażu"
+        },
+        "correctAnswer": "C"
+      }],
+    [{
+      "id": 8,
+      "question": "Ślub jednostronny to ślub:",
+      "answers":
+      {
+        "A": "katolika za sobą",
+        "B": "katolika z niekatolikiem",
+        "C": "tylko cywilny",
+        "D": "tylko konkordatowy "
+      },
+      "correctAnswer": "B"
+    },
+      {
+        "id": 8,
+        "question": "Wadery to nieprzemakalne buty:",
+        "answers":
+        {
+          "A": "połączone z kapeluszem",
+          "B": "z wilczej skóry",
+          "C": "połączone ze spodniami",
+          "D": "na szpileczce"
+        },
+        "correctAnswer": "C"
+      }],
+    [{
+      "id": 9,
+      "question": "Która jest wyższa od pozostałych?",
+      "answers":
+      {
+        "A": "ostróżka ogrodowa",
+        "B": "konwalia majowa",
+        "C": "sasanka zwyczajna",
+        "D": "macierzanka piaskowa"
+      },
+      "correctAnswer": "A"
+    },
+      {
+        "id": 9,
+        "question": "Kto był czyim pracodawcą?",
+        "answers":
+        {
+          "A": "Nikola Tesla Thomasa A. Edisona",
+          "B": "Thomas A. Edison Nikoli Tesli",
+          "C": "Elon Musk Nikoli Tesli",
+          "D": "Nikola Tesla Elona Muska"
+        },
+        "correctAnswer": "B"
+      },
+      {
+        "id": 9,
+        "question": "Człowiek w przestrzeni kosmicznej bez chroniącego go skafandra po 15 sekundach najpewniej:",
+        "answers":
+        {
+          "A": "skurczy się o połowę",
+          "B": "stanie w płomieniach",
+          "C": "zamarznie na kość",
+          "D": "straci przytomność"
+        },
+        "correctAnswer": "D"
+      }],
+    [{
+      "id": 10,
+      "question": "Co czyta Kordian z dramatu Słowackiego, siedząc na białej kredowej skale nad morzem?",
+      "answers":
+      {
+        "A": "\"Dżumę\" Camusa",
+        "B": " \"Wściekłość i wrzask\" Faulknera",
+        "C": "\"Króla Leara\" Szekspira",
+        "D": "\"Proces\" Kafki"
+      },
+      "correctAnswer": "C"
+    },
+      {
+        "id": 10,
+        "question": "Kim z pochodzenia był słynny amerykański reżyser, aktor i producent Sydney Pollack?",
+        "answers":
+        {
+          "A": "Australijczyk",
+          "B": "Polak",
+          "C": "Rosjanin",
+          "D": "Rumun"
+        },
+        "correctAnswer": "C"
+      },
+      {
+        "id": 10,
+        "question": "W zwierzyńcu niebieskim nie ma przedstawiciela:",
+        "answers":
+        {
+          "A": "stawonogów",
+          "B": "owadów",
+          "C": "strunowców",
+          "D": "ssaków"
+        },
+        "correctAnswer": "B"
+      },
+      {
+        "id": 10,
+        "question": "Wnuk Syzyfa usiłował dostać się na Olimp, wzlatując:",
+        "answers":
+        {
+          "A": "na skrzydłach Ikara",
+          "B": "w sandałach Hermesa",
+          "C": "na skrzydłach Nike",
+          "D": "na grzbiecie Pegaza"
+        },
+        "correctAnswer": "D"
+      },
+      {
+        "id": 10,
+        "question": "Według hierarchii starszeństwa wśród polskich odznaczeń Medal za Długoletnie Pożycie Małżeńskie jest wyżej niż:",
+        "answers":
+        {
+          "A": "Krzyż Partyzancki",
+          "B": "Gwiazda Afganistanu",
+          "C": "Order Orła Białego",
+          "D": "Order Odrodzenia Polski"
+        },
+        "correctAnswer": "B"
+      },
+      {
+        "id": 10,
+        "question": "Tytułowa traviata to ta, która pobłądziła. Kto nią jest?",
+        "answers":
+        {
+          "A": "cyganka Carmen",
+          "B": "góralka Halka",
+          "C": "kurtyzana Violetta Valery",
+          "D": "etiopska niewolnica Aida"
+        },
+        "correctAnswer": "C"
+      }],
+    [{
+      "id": 11,
+      "question": "Który z prezydentów zginął, patrząc na \"Szron\"?",
+      "answers":
+      {
+        "A": "Gabriel Narutowicz",
+        "B": "John F. Kennedy",
+        "C": "Abraham Lincoln",
+        "D": "Ryszard Kaczorowski"
+      },
+      "correctAnswer": "A"
+    },
+      {
+        "id": 11,
+        "question": "Starte ziemniaki i mąka to w zasadzie wszystko, czego potrzebujemy na tak zwane kluski:",
+        "answers":
+        {
+          "A": "szklane",
+          "B": "plastikowe",
+          "C": "papierowe",
+          "D": "żelazne"
+        },
+        "correctAnswer": "D"
+      },
+      {
+        "id": 11,
+        "question": "\"Jeśli kto nie ma w nienawiści swego ojca, matki, zony i dzieci, braci i sióstr, nadto i siebie samego, nie może być moim uczniem\". To słowa:",
+        "answers":
+        {
+          "A": "Jezusa Chrystusa",
+          "B": "Allaha",
+          "C": "Mojżesza",
+          "D": "Buddy"
+        },
+        "correctAnswer": "A"
+      },
+      {
+        "id": 11,
+        "question": "Albert Einstein był obdżektorem. Kto jeszcze?",
+        "answers":
+        {
+          "A": "Winston Churchill",
+          "B": "Bronisław Cieślak",
+          "C": "Maciej Maleńczuk",
+          "D": "Janusz Gajos"
+        },
+        "correctAnswer": "C"
+      }],
+    [{
+      "id": 12,
+      "question": "Który ssak się nie spoci?",
+      "answers":
+      {
+        "A": "owca",
+        "B": "koń",
+        "C": "człowiek",
+        "D": "królik"
+      },
+      "correctAnswer": "D"
+    },
+      {
+        "id": 12,
+        "question": "Skąd pochodzi Conan Barbarzyńca?",
+        "answers":
+        {
+          "A": "z Rivii",
+          "B": "z Oz",
+          "C": "z Mordoru",
+          "D": "z Cimmerii"
+        },
+        "correctAnswer": "D"
+      },
+      {
+        "id": 12,
+        "question": "Rybą nie jest",
+        "answers":
+        {
+          "A": "świnka",
+          "B": "rozpiór",
+          "C": "kraska",
+          "D": "krasnopiórka"
+        },
+        "correctAnswer": "C"
+      },
+      {
+        "id": 12,
+        "question": "Mowa w obronie poety Archiasza przeszła do historii jako jeden z najświetniejszych popisów retorycznych:",
+        "answers":
+        {
+          "A": "Izokratesa",
+          "B": "Cycerona",
+          "C": "Demostenesa",
+          "D": "Kwintyliana"
+        },
+        "correctAnswer": "B"
+      },
+      {
+        "id": 12,
+        "question": "Ryś polski, łabędź rostowski, saksoński bocian i wywrotek smoleński to:",
+        "answers":
+        {
+          "A": "rasy gołębi",
+          "B": "rasy kur",
+          "C": "chrząszcze",
+          "D": "akrobacje na deskorolce"
+        },
+        "correctAnswer": "A"
+      }]
+
+  ]
+}
