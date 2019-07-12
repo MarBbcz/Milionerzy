@@ -9,22 +9,36 @@ import phoneUsed from "./images/phoneUsed.png";
 import half from "./images/half.gif";
 import halfUsed from "./images/halfUsed.png";
 import person from "./images/person.png";
-import {MainThemePlay, CorrectAnswerPlay, WrongAnswerPlay, FinalAnswerPlay} from "./player.js";
+import person2 from "./images/person2.png";
+import person3 from "./images/person3.png";
+import person4 from "./images/person4.png";
+import winningBoard from "./images/winningBoard.jpg";
+import {MainThemePlay, CorrectAnswerPlay, WrongAnswerPlay, FinalAnswerPlay, StartThemePlay, ClosingThemePlay, FiftyFiftyThemePlay} from "./player.js";
 
 
 
 const Home = () => {
+    const StartThemeAudio = StartThemePlay();
+    StartThemeAudio.play();
+    MainThemePlay().stop();
+
+    function handleOnClick() {
+        return StartThemeAudio.stop();
+    }
+
     return (
         <div className="main">
-            <header className="mainHeader">
-                <img src={logo} alt="" className="mainLogo"/>
-            </header>
-            <section>
-                    <NavLink style={{textDecoration: "none"}} to="/game">
-                        <button className="playBtn">Graj</button>
-                    </NavLink>
-            </section>
-            <footer> </footer>
+            <div className="mainBg">
+                <header className="mainHeader">
+                    <img src={logo} alt="" className="mainLogo"/>
+                </header>
+                <section>
+                        <NavLink style={{textDecoration: "none"}} to="/game">
+                            <button onClick={handleOnClick} className="playBtn">Graj</button>
+                        </NavLink>
+                </section>
+                <footer> </footer>
+            </div>
         </div>
     )
 };
@@ -40,18 +54,21 @@ class Game extends Component {
         fiftyImage: half,
         phoneImage: phone,
         askImage: ask,
+        friendImageTab: [person, person2, person3, person4],
+        friendImage: "",
         hideAnswers: "",
         showBar: "",
         friendsAnswer: "",
         showAudience: "",
-        percentageA: 50,
-        percentageB: 50,
-        percentageC: 50,
-        percentageD: 50,
+        percentageA: 0,
+        percentageB: 0,
+        percentageC: 0,
+        percentageD: 0,
         currentQuestionData: null
 
 
     };
+
 
 
     loadData() {
@@ -71,21 +88,34 @@ class Game extends Component {
         });
     };
 
+
     handleOnClick = (e) => {
         const {data} = this.state;
+        const FinalAnswerAudio = FinalAnswerPlay();
+        const CorrectAnswerAudio = CorrectAnswerPlay();
+        const WrongAnswerAudio = WrongAnswerPlay();
+
 
        { this.setState({disable: true});
+           MainThemePlay().stop();
+           FinalAnswerAudio.play();
 
            if (e.target.name === this.state.currentQuestionData.correctAnswer) {
+
             console.log("OK");
            e.target.classList.add("selected");
            e.persist(this.timeoutId = setTimeout(() => {
                e.target.classList.remove("selected");
                e.target.classList.add("correct");
-               CorrectAnswerPlay().play();
-           }, 3000));
+               MainThemePlay().stop();
+               FinalAnswerAudio.stop();
+               CorrectAnswerAudio.play();
+           }, 3500));
            e.persist(this.timeoutId = setTimeout(() => {
               this.setState(prevState => {
+                  if (prevState.qNumber + 1 === 12) {
+                     return this.props.history.push("/result/1 000 000zł");
+                  }
                   return {qNumber: prevState.qNumber + 1}
               }, this.chooseCurrentQuestion);
                e.target.classList.remove("correct");
@@ -93,13 +123,11 @@ class Game extends Component {
                this.setState({hideAnswers: ""});
                this.setState({showBar: ""});
                this.setState({showAudience: ""});
-               CorrectAnswerPlay().stop();
+               CorrectAnswerAudio.stop();
 
-               if (this.state.qNumber === 12) {
-                   this.props.history.push("/result/1 000 000zł");
-               }
 
-           }, 4500));
+
+           }, 7200));
 
 
 
@@ -111,14 +139,28 @@ class Game extends Component {
            e.persist(this.timeoutId = setTimeout(() => {
                e.target.classList.remove("selected");
                e.target.classList.add("wrong");
-               WrongAnswerPlay().play();
-           }, 3000));
+               MainThemePlay().stop();
+               FinalAnswerAudio.stop();
+               WrongAnswerAudio.play();
+
+               const buttons = document.querySelectorAll(".answerBox");
+
+               buttons.forEach(el => {
+                   if (el.name === this.state.currentQuestionData.correctAnswer) {
+                       el.classList.add("correct")
+                   }
+               })
+
+
+           }, 3500));
            this.timeoutId = setTimeout(() => {
                this.setState({disable: false});
                const amounts = ["0zł", "0zł", "1 000zł", "1 000zł", "1 000zł", "1 000zł", "1 000zł", "40 000zł", "40 000zł", "40 000zł", "40 000zł", "40 000zł"];
                this.props.history.push(`/result/${amounts[this.state.qNumber]}`)
+               WrongAnswerAudio.stop();
+               MainThemePlay().stop();
 
-           }, 4500)
+           }, 7200)
 
        }
 
@@ -128,6 +170,7 @@ class Game extends Component {
 
 
     fiftyFiftyClick = () => {
+        FiftyFiftyThemePlay().play();
         this.setState({wasUsed1: true});
         this.setState({fiftyImage: halfUsed});
 
@@ -144,7 +187,8 @@ class Game extends Component {
 
 
     componentDidMount() {
-        this.loadData()
+        this.loadData();
+        this.setState({friendImage: this.state.friendImageTab[Math.floor(Math.random()* this.state.friendImageTab.length)]})
     }
 
     callFriendClick = () => {
@@ -182,12 +226,17 @@ class Game extends Component {
 
         // const foo = Math.random() * 100;
 
+
         if (this.state.currentQuestionData.correctAnswer === "A") {
 
             this.setState({percentageA: Math.floor(Math.random() * (51)) + 50});
             this.setState({percentageB: Math.floor(Math.random() * (51))});
             this.setState({percentageC: Math.floor(Math.random() * (51))});
             this.setState({percentageD: Math.floor(Math.random() * (51))});
+            if (this.state.qNumber > 5) {
+                this.setState({percentageA: Math.floor(Math.random() * (41)) + 50});
+            }
+
 
         } else if (this.state.currentQuestionData.correctAnswer === "B") {
 
@@ -195,6 +244,9 @@ class Game extends Component {
             this.setState({percentageA: Math.floor(Math.random() * 51)});
             this.setState({percentageC: Math.floor(Math.random() * 51)});
             this.setState({percentageD: Math.floor(Math.random() * 51)});
+            if (this.state.qNumber > 5) {
+                this.setState({percentageB: Math.floor(Math.random() * (41)) + 50});
+            }
 
         } else if (this.state.currentQuestionData.correctAnswer === "C") {
 
@@ -202,14 +254,35 @@ class Game extends Component {
             this.setState({percentageB: Math.floor(Math.random() * 51)});
             this.setState({percentageA: Math.floor(Math.random() * 51)});
             this.setState({percentageD: Math.floor(Math.random() * 51)});
+            if (this.state.qNumber > 5) {
+                this.setState({percentageC: Math.floor(Math.random() * (41)) + 50});
+            }
 
-        } else if (this.state.currentQuestionDatadata.correctAnswer === "D") {
+        } else if (this.state.currentQuestionData.correctAnswer === "D") {
 
             this.setState({percentageD: Math.floor(Math.random() * (51)) + 50});
             this.setState({percentageB: Math.floor(Math.random() * 51)});
             this.setState({percentageC: Math.floor(Math.random() * 51)});
             this.setState({percentageA: Math.floor(Math.random() * 51)});
+            if (this.state.qNumber > 5) {
+                this.setState({percentageD: Math.floor(Math.random() * (41)) + 50});
+            }
 
+        }
+
+        if (this.state.hideAnswers !== "") {
+            if (this.state.hideAnswers.includes("A")) {
+                this.setState({percentageA: 0});
+            }
+            if (this.state.hideAnswers.includes("B")) {
+                this.setState({percentageB: 0});
+            }
+            if (this.state.hideAnswers.includes("C")) {
+                this.setState({percentageC: 0});
+            }
+            if (this.state.hideAnswers.includes("D")) {
+                this.setState({percentageD: 0});
+            }
         }
 
 
@@ -218,6 +291,8 @@ class Game extends Component {
 
 
     render() {
+        MainThemePlay().play();
+        ClosingThemePlay().stop();
 
         if (!this.state.currentQuestionData) {
             return null;
@@ -232,7 +307,7 @@ class Game extends Component {
                     <button style={{backgroundColor: "transparent", border: "none", outline: "none"}} onClick={this.askAudienceClick} disabled={this.state.wasUsed3}><img src={this.state.askImage}alt="" className="lifelineIco"/></button>
                     <button style={{backgroundColor: "transparent", border: "none", outline: "none"}} onClick={this.callFriendClick} disabled={this.state.wasUsed2}><img src={this.state.phoneImage} alt="" className="lifelineIco"/></button>
                     <button style={{backgroundColor: "transparent", border: "none", outline: "none"}} onClick={this.fiftyFiftyClick} disabled={this.state.wasUsed1}><img src={this.state.fiftyImage} alt="" className="lifelineIco"/></button>
-                    <div className={["friendBubble", this.state.showBar].join(" ")}><img src={person} alt="" className="friendIco"/><p>Wydaje mi się, że poprawna odpowiedź to...</p><p className="frAns">{this.state.friendsAnswer}</p></div>
+                    <div className={["friendBubble", this.state.showBar].join(" ")}><img src={this.state.friendImage} alt="" className="friendIco"/><p>Wydaje mi się, że poprawna odpowiedź to...</p><p className="frAns">{this.state.friendsAnswer}</p></div>
                     <div className={["publicBubble", this.state.showAudience].join(" ")}>
                         <div className="container">
                             <div className="barContainer" style={{marginLeft: "0"}}>
@@ -301,17 +376,29 @@ class Game extends Component {
 }
 
 const Result = (props) => {
+    setTimeout(function () {
+        ClosingThemePlay().play();
+        ClosingThemePlay().fade(0.0, 0.5, 12000);
+    },500);
+
+
+
+
     return (
         <div className="endGame">
-            <div className="resultBoard">
-                <div className="endGameText">
-                    Koniec gry!<br/>
-                    Wygrałeś {props.match.params.amount}
+            {/*<div className="endText">Koniec gry!</div>*/}
+            <div className="prizeBoard">
+                <img className="endImage" src={winningBoard} alt=""/>
+                <div className="prize">{props.match.params.amount}</div>
+                <div className="endBar">
+                    <NavLink style={{textDecoration: "none", display: "flex", justifyContent: "center"}} to="/game">
+                         <button className="nextGameBtn">Zagraj ponownie</button>
+                    </NavLink>
                 </div>
-                <NavLink style={{textDecoration: "none"}} to="/game">
-                    <button className="nextGameBtn">Zagraj ponownie</button>
-                </NavLink>
+
             </div>
+
+
 
         </div>
     )
