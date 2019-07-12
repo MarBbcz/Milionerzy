@@ -1,3 +1,3 @@
 ## Milionerzy
 
-https://marbbcz.github.io/Milionerzy/
+live demo: https://marbbcz.github.io/Milionerzy/

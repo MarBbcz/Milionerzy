@@ -14,8 +14,7 @@ import person3 from "./images/person3.png";
 import person4 from "./images/person4.png";
 import winningBoard from "./images/winningBoard.jpg";
 import {MainThemePlay, CorrectAnswerPlay, WrongAnswerPlay, FinalAnswerPlay, StartThemePlay, ClosingThemePlay, FiftyFiftyThemePlay} from "./player.js";
-
-
+import {questions} from "./database/questions.json";
 
 const Home = () => {
     const StartThemeAudio = StartThemePlay();
@@ -72,12 +71,13 @@ class Game extends Component {
 
 
     loadData() {
-        this.setState({loading: true}, () => {
-            fetch(`http://localhost:3001/questions`)
-                .then(bigObj => bigObj.json())
-                .then(dataFromJson => this.setState({ data: dataFromJson, loading: false }, this.chooseCurrentQuestion))
-                .catch(error => console.log(error));
-        });
+        this.setState({ data: questions, loading: false }, this.chooseCurrentQuestion);
+        // this.setState({loading: true}, () => {
+        //     fetch(`http://localhost:3001/questions`)
+        //         .then(bigObj => bigObj.json())
+        //         .then(dataFromJson => this.setState({ data: dataFromJson, loading: false }, this.chooseCurrentQuestion))
+        //         .catch(error => console.log(error));
+        // });
 
     }
 
