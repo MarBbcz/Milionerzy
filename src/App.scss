@@ -84,11 +84,129 @@ $successColor: #C19B28;
   background-image: url("./images/background.jpg");
 }
 
-.gameLogo {
-  height: 250px;
-  width: 250px;
+.logoTimer {
+  position: relative;
+  height: 270px;
+  width: 270px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.gameHeader {
+  height: 90%;
+  width: 90%;
   padding-bottom: 30px;
 }
+
+.gameLogo {
+  height: 100%;
+  width: 100%;
+}
+
+.timer {
+  position: absolute;
+  top: 13%;
+  left: 18%;
+  height: 100%;
+  width: 100%;
+}
+
+
+$d: 100;
+$w: 2;
+
+.center {
+  position: absolute;
+  margin-top: -($d / 2)+px;
+  margin-left: -($d / 2)+px;
+}
+
+/* -- CIRCLE -- */
+
+.circle {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 $w+px rgba(255,255,255,0.2);
+}
+
+.l-half, .r-half {
+  float: left;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: $w+px solid $mainColor;
+    animation-duration: 30s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+
+}
+
+.l-half:before {
+  border-right: none;
+  border-top-left-radius: 999px;
+  border-bottom-left-radius: 999px;
+  -webkit-transform-origin: center right;
+  -webkit-animation-name: l-rotate;
+}
+
+.r-half:before {
+  border-left: none;
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+  -webkit-transform-origin: center left;
+  -webkit-animation-name: r-rotate;
+}
+
+/* -- TIMER -- */
+
+.count {
+  position: absolute;
+  top: -53px;
+  width: 100%;
+  line-height: $d+px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 35px;
+  font-family: Helvetica;
+  color: #fff;
+  z-index: 2;
+  animation: fadeout .5s (30 + 1)+s 1 linear;
+  animation-fill-mode: forwards;
+  opacity: 0.9;
+}
+
+@keyframes l-rotate {
+  0% { -webkit-transform: rotate(0deg); }
+  50% { -webkit-transform: rotate(-180deg); }
+  100% { -webkit-transform: rotate(-180deg); }
+}
+
+@keyframes r-rotate {
+  0% { -webkit-transform: rotate(0deg); }
+  50% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(-180deg); }
+}
+
+@keyframes fadeout {
+  0% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+
+
+
 
 .gameSection {
   width: 70%;
@@ -99,6 +217,7 @@ $successColor: #C19B28;
 }
 
 .questionBox {
+  margin-top: 40px;
   width: 600px;
   padding: 20px;
   border: 2px solid $mainColor;
@@ -358,14 +477,24 @@ li.successBar::before {
   display: flex;
   width: 600px;
 }
-
+.prizeBar {
+  box-sizing: border-box;
+  width: 100%;
+  height: 80px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+}
 .prize {
   position: absolute;
-  top: 40%;
-  left: 40%;
+  padding: 10px;
+  text-align: center;
   color: black;
   font-size: 45px;
-  text-shadow: 4px 3px 0px #7A7A7A;
+  text-shadow: 3px 2px 0 #7A7A7A;
+
 }
 
 .endText {

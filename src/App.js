@@ -50,6 +50,7 @@ class Game extends Component {
         wasUsed1: false,
         wasUsed2: false,
         wasUsed3: false,
+        counter: 30,
         fiftyImage: half,
         phoneImage: phone,
         askImage: ask,
@@ -63,7 +64,8 @@ class Game extends Component {
         percentageB: 0,
         percentageC: 0,
         percentageD: 0,
-        currentQuestionData: null
+        currentQuestionData: null,
+        showCounter: true
 
 
     };
@@ -116,14 +118,19 @@ class Game extends Component {
                   if (prevState.qNumber + 1 === 12) {
                      return this.props.history.push("/result/1 000 000zł");
                   }
-                  return {qNumber: prevState.qNumber + 1}
-              }, this.chooseCurrentQuestion);
+
+                  return {qNumber: prevState.qNumber + 1, counter: 30, showCounter: false};
+              }, () => {
+                  this.chooseCurrentQuestion();
+                  this.setState({ showCounter: true });
+              });
                e.target.classList.remove("correct");
                this.setState({disable: false});
                this.setState({hideAnswers: ""});
                this.setState({showBar: ""});
                this.setState({showAudience: ""});
                CorrectAnswerAudio.stop();
+               // this.setState({counter: 30});
 
 
 
@@ -189,6 +196,7 @@ class Game extends Component {
     componentDidMount() {
         this.loadData();
         this.setState({friendImage: this.state.friendImageTab[Math.floor(Math.random()* this.state.friendImageTab.length)]})
+        this.Timer();
     }
 
     callFriendClick = () => {
@@ -288,6 +296,20 @@ class Game extends Component {
 
     };
 
+    Timer = () => {
+            setInterval(() => {
+                this.setState((prevState) => {
+                    return {counter: prevState.counter - 1}
+                }, () => {
+                    if (this.state.counter < 0) {
+                        const amounts = ["0zł", "0zł", "1 000zł", "1 000zł", "1 000zł", "1 000zł", "1 000zł", "40 000zł", "40 000zł", "40 000zł", "40 000zł", "40 000zł"];
+                        this.props.history.push(`/result/${amounts[this.state.qNumber]}`)
+                    }
+                });
+            }, 1000);
+
+    };
+
 
 
     render() {
@@ -336,8 +358,17 @@ class Game extends Component {
                     </div>
                 </section>
                 <section className="gameSection">
-                    <div className="gameHeader">
-                        <img src={logo} alt="" className="gameLogo"/>
+                    <div className="logoTimer">
+                        <div className="gameHeader">
+                            <img src={logo} alt="" className="gameLogo"/>
+                        </div>
+                        <div className="timer">
+                            { this.state.showCounter ? <div className="circle center">
+                                <div className="count">{this.state.counter}</div>
+                                <div className="l-half"> </div>
+                                <div className="r-half"> </div>
+                            </div> : null }
+                        </div>
                     </div>
                     <div className="questionBox">
                         {this.state.currentQuestionData.question}
@@ -389,7 +420,9 @@ const Result = (props) => {
             {/*<div className="endText">Koniec gry!</div>*/}
             <div className="prizeBoard">
                 <img className="endImage" src={winningBoard} alt=""/>
-                <div className="prize">{props.match.params.amount}</div>
+                <div className="prizeBar">
+                    <div className="prize">{props.match.params.amount}</div>
+                </div>
                 <div className="endBar">
                     <NavLink style={{textDecoration: "none", display: "flex", justifyContent: "center"}} to="/game">
                          <button className="nextGameBtn">Zagraj ponownie</button>
