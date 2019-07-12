@@ -96,6 +96,30 @@
           "D": "zbity pysk"
         },
         "correctAnswer": "C"
+      },
+      {
+        "id": 1,
+        "question": "W starcie niskim sprinter rusza:",
+        "answers":
+        {
+          "A": "z falowców",
+          "B": "z bloków",
+          "C": "punktowców",
+          "D": "z wieżowców"
+        },
+        "correctAnswer": "B"
+      },
+      {
+        "id": 1,
+        "question": "W starcie niskim sprinter rusza:",
+        "answers":
+        {
+          "A": "literatkę",
+          "B": "kieliszek",
+          "C": "bigotkę",
+          "D": "galaretkę wieprzową"
+        },
+        "correctAnswer": "B"
       }
     ],
     [{
@@ -193,6 +217,30 @@
           "D": "RGB"
         },
         "correctAnswer": "B"
+      },
+      {
+        "id": 2,
+        "question": "Najmniej do zrobienia mamy w mieszkaniu oddanym w stanie:",
+        "answers":
+        {
+          "A": "surowym otwartym",
+          "B": "surowym zamkniętym",
+          "C": "deweloperskim",
+          "D": "pod klucz"
+        },
+        "correctAnswer": "D"
+      },
+      {
+        "id": 2,
+        "question": "Sumeryjski nośnik pisma klinowego to:",
+        "answers":
+        {
+          "A": "zwoje pergaminu",
+          "B": "jedwab",
+          "C": "papirus",
+          "D": "gliniane tabliczki"
+        },
+        "correctAnswer": "D"
       }],
     [{
       "id": 3,
@@ -241,6 +289,30 @@
           "D": "mandarynka"
         },
         "correctAnswer": "D"
+      },
+      {
+        "id": 3,
+        "question": "Co zawsze odsłania tak zwana mała czarna?",
+        "answers":
+        {
+          "A": "całe ramiona",
+          "B": "okolice pępka",
+          "C": "znaczną część nóg",
+          "D": "plecy do pośladków"
+        },
+        "correctAnswer": "C"
+      },
+      {
+        "id": 3,
+        "question": "Bez względu na to, jaki kierunek geograficzny obierze się, będąc na południowym biegunie geograficznym, zawsze będzie to:",
+        "answers":
+        {
+          "A": "północ",
+          "B": "południe",
+          "C": "wschód",
+          "D": "zachód"
+        },
+        "correctAnswer": "A"
       }],
     [{
       "id": 4,
@@ -289,6 +361,66 @@
           "D": "Trójząb Posejdona"
         },
         "correctAnswer": "C"
+      },
+      {
+        "id": 4,
+        "question": "Bindi to czerwona kropka:",
+        "answers":
+        {
+          "A": "na czole",
+          "B": "na języku ",
+          "C": "na czubku nosa ",
+          "D": "w rogu telewizora "
+        },
+        "correctAnswer": "A"
+      },
+      {
+        "id": 4,
+        "question": "Jakie zwierzę jest symbolem organizacji WWF",
+        "answers":
+        {
+          "A": "niedźwiedź polarny",
+          "B": "koala",
+          "C": "panda wielka",
+          "D": "grizzly"
+        },
+        "correctAnswer": "C"
+      },
+      {
+        "id": 4,
+        "question": "Co przypomina kształtem wenecki Canal Grande?",
+        "answers":
+        {
+          "A": "hashtag",
+          "B": "strzałkę",
+          "C": "symbol nieskończoności",
+          "D": "odwróconą literę S"
+        },
+        "correctAnswer": "D"
+      },
+      {
+        "id": 4,
+        "question": "Musashi i Yamato to słynne bliźniacze: ",
+        "answers":
+        {
+          "A": "wulkany na Honsiu",
+          "B": "wieże w Dubaju",
+          "C": "okręty wojenne",
+          "D": "stadiony olimpijskie"
+        },
+        "correctAnswer": "C"
+      },
+      {
+        "id": 4,
+        "question": "Drony to bezzałogowe statki latające. A androny?",
+        "answers":
+        {
+          "A": "niestworzone rzeczy",
+          "B": "załogowe statki latające",
+          "C": "bezzałogowe statki wodne",
+          "D": "stworzone rzeczy"
+        },
+        "correctAnswer": "A"
       }],
     [{
       "id": 5,
@@ -325,6 +457,30 @@
           "D": "Raróg Universe"
         },
         "correctAnswer": "B"
+      },
+      {
+        "id": 5,
+        "question": "Czego nie może zabraknąć w guacamole?",
+        "answers":
+        {
+          "A": "fig",
+          "B": "mango",
+          "C": "awokado",
+          "D": "oliwek"
+        },
+        "correctAnswer": "C"
+      },
+      {
+        "id": 5,
+        "question": "Częstotliwość napięcia w sieci elektroenergetycznej w Polsce i reszcie UE wynosi?",
+        "answers":
+        {
+          "A": "50 hz",
+          "B": "60 hz",
+          "C": "220 v",
+          "D": "230 v"
+        },
+        "correctAnswer": "A"
       }],
     [{
       "id": 6,
@@ -373,11 +529,23 @@
           "D": "komecie Halleya"
         },
         "correctAnswer": "B"
+      },
+      {
+        "id": 6,
+        "question": "Kto był nazywany sygnalistą?",
+        "answers":
+        {
+          "A": "Wynton Marsalis",
+          "B": "Edward Snowden",
+          "C": "Paulo Coelho",
+          "D": "Felipe Massa"
+        },
+        "correctAnswer": "B"
       }
     ],
     [{
       "id": 7,
-      "question": "Wafel pieczony z delikatnego ciasta w\nspecjalnych foremkach to:",
+      "question": "Wafel pieczony z delikatnego ciasta w specjalnych foremkach to:",
       "answers":
       {
         "A": "bajgiel",

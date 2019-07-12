@@ -413,11 +413,9 @@ const Result = (props) => {
     },500);
 
 
-
-
     return (
         <div className="endGame">
-            {/*<div className="endText">Koniec gry!</div>*/}
+
             <div className="prizeBoard">
                 <img className="endImage" src={winningBoard} alt=""/>
                 <div className="prizeBar">
