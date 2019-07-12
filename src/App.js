@@ -244,6 +244,10 @@ class Game extends Component {
             if (this.state.qNumber > 5) {
                 this.setState({percentageA: Math.floor(Math.random() * (41)) + 50});
             }
+            if (this.state.qNumber > 8) {
+                this.setState({percentageA: Math.floor(Math.random() * (51)) + 30});
+            }
+
 
 
         } else if (this.state.currentQuestionData.correctAnswer === "B") {
@@ -255,6 +259,9 @@ class Game extends Component {
             if (this.state.qNumber > 5) {
                 this.setState({percentageB: Math.floor(Math.random() * (41)) + 50});
             }
+            if (this.state.qNumber > 8) {
+                this.setState({percentageB: Math.floor(Math.random() * (51)) + 30});
+            }
 
         } else if (this.state.currentQuestionData.correctAnswer === "C") {
 
@@ -265,6 +272,9 @@ class Game extends Component {
             if (this.state.qNumber > 5) {
                 this.setState({percentageC: Math.floor(Math.random() * (41)) + 50});
             }
+            if (this.state.qNumber > 8) {
+                this.setState({percentageC: Math.floor(Math.random() * (51)) + 30});
+            }
 
         } else if (this.state.currentQuestionData.correctAnswer === "D") {
 
@@ -274,6 +284,9 @@ class Game extends Component {
             this.setState({percentageA: Math.floor(Math.random() * 51)});
             if (this.state.qNumber > 5) {
                 this.setState({percentageD: Math.floor(Math.random() * (41)) + 50});
+            }
+            if (this.state.qNumber > 8) {
+                this.setState({percentageD: Math.floor(Math.random() * (51)) + 30});
             }
 
         }
