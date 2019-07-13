@@ -15,6 +15,7 @@ import person4 from "./images/person4.png";
 import winningBoard from "./images/winningBoard.jpg";
 import {MainThemePlay, CorrectAnswerPlay, WrongAnswerPlay, FinalAnswerPlay, StartThemePlay, ClosingThemePlay, FiftyFiftyThemePlay} from "./player.js";
 import {questions} from "./database/questions.json";
+import info from "./images/info.png";
 
 const Home = () => {
     const StartThemeAudio = StartThemePlay();
@@ -36,7 +37,11 @@ const Home = () => {
                             <button onClick={handleOnClick} className="playBtn">Graj</button>
                         </NavLink>
                 </section>
-                <footer> </footer>
+                <footer>
+                   <div className="info">
+                        <button className="buttonInfo" onClick="showModal"><img src={info} alt="" className="infoIco"/></button>
+                    </div>
+                </footer>
             </div>
         </div>
     )
@@ -310,11 +315,13 @@ class Game extends Component {
     };
 
     Timer = () => {
+        const WrongAnswerAudio = WrongAnswerPlay();
             setInterval(() => {
                 this.setState((prevState) => {
                     return {counter: prevState.counter - 1}
                 }, () => {
                     if (this.state.counter < 0) {
+                        WrongAnswerAudio.play();
                         const amounts = ["0zł", "0zł", "1 000zł", "1 000zł", "1 000zł", "1 000zł", "1 000zł", "40 000zł", "40 000zł", "40 000zł", "40 000zł", "40 000zł"];
                         this.props.history.push(`/result/${amounts[this.state.qNumber]}`)
                     }
@@ -371,46 +378,48 @@ class Game extends Component {
                     </div>
                 </section>
                 <section className="gameSection">
-                    <div className="logoTimer">
-                        <div className="gameHeader">
-                            <img src={logo} alt="" className="gameLogo"/>
+                    <section className="questionSection">
+                        <div className="logoTimer">
+                            <div className="gameHeader">
+                                <img src={logo} alt="" className="gameLogo"/>
+                            </div>
+                            <div className="timer">
+                                { this.state.showCounter ? <div className="circle center">
+                                    <div className="count">{this.state.counter}</div>
+                                    <div className="l-half"> </div>
+                                    <div className="r-half"> </div>
+                                </div> : null }
+                            </div>
                         </div>
-                        <div className="timer">
-                            { this.state.showCounter ? <div className="circle center">
-                                <div className="count">{this.state.counter}</div>
-                                <div className="l-half"> </div>
-                                <div className="r-half"> </div>
-                            </div> : null }
+                        <div className="questionBox">
+                            {this.state.currentQuestionData.question}
                         </div>
-                    </div>
-                    <div className="questionBox">
-                        {this.state.currentQuestionData.question}
-                    </div>
-                    <div className="answerBoxes">
+                        <div className="answerBoxes">
 
 
-                        <button className="answerBox" name="A" onClick={this.handleOnClick} disabled={this.state.disable}> A. { this.state.hideAnswers.includes("A") ? "" : this.state.currentQuestionData.answers.A}  </button>
-                        <button className="answerBox" name="B" onClick={this.handleOnClick} disabled={this.state.disable}> B. { this.state.hideAnswers.includes("B") ? "" : this.state.currentQuestionData.answers.B}</button>
-                        <button className="answerBox" name="C" onClick={this.handleOnClick} disabled={this.state.disable}> C. { this.state.hideAnswers.includes("C") ? "" : this.state.currentQuestionData.answers.C}</button>
-                        <button className="answerBox" name="D" onClick={this.handleOnClick} disabled={this.state.disable}> D. { this.state.hideAnswers.includes("D") ? "" : this.state.currentQuestionData.answers.D}</button>
-                    </div>
-                </section>
-                <section className="progressSection">
+                            <button className="answerBox" name="A" onClick={this.handleOnClick} disabled={this.state.disable}> A. { this.state.hideAnswers.includes("A") ? "" : this.state.currentQuestionData.answers.A}  </button>
+                            <button className="answerBox" name="B" onClick={this.handleOnClick} disabled={this.state.disable}> B. { this.state.hideAnswers.includes("B") ? "" : this.state.currentQuestionData.answers.B}</button>
+                            <button className="answerBox" name="C" onClick={this.handleOnClick} disabled={this.state.disable}> C. { this.state.hideAnswers.includes("C") ? "" : this.state.currentQuestionData.answers.C}</button>
+                            <button className="answerBox" name="D" onClick={this.handleOnClick} disabled={this.state.disable}> D. { this.state.hideAnswers.includes("D") ? "" : this.state.currentQuestionData.answers.D}</button>
+                        </div>
+                    </section>
+                    <section className="progressSection">
 
-                    <ul className="progressBar">
-                        <li className={this.state.qNumber >= 12 && "successBar"} style={{color: "gold"}}>1 000 000zł</li>
-                        <li className={this.state.qNumber >= 11 && "successBar"}>500 000zł</li>
-                        <li className={this.state.qNumber >= 10 && "successBar"}>250 000zł</li>
-                        <li className={this.state.qNumber >= 9 && "successBar"}>125 000zł</li>
-                        <li className={this.state.qNumber >= 8 && "successBar"}>75 000zł</li>
-                        <li className={this.state.qNumber >= 7 && "successBar"} style={{color: "gold"}}>40 000zł</li>
-                        <li className={this.state.qNumber >= 6 && "successBar"}>20 000zł</li>
-                        <li className={this.state.qNumber >= 5 && "successBar"}>10 000zł</li>
-                        <li className={this.state.qNumber >= 4 && "successBar"}>5 000zł</li>
-                        <li className={this.state.qNumber >= 3 && "successBar"}>2 000zł</li>
-                        <li className={this.state.qNumber >= 2 && "successBar"} style={{color: "gold"}}>1 000zł</li>
-                        <li className={this.state.qNumber >= 1 && "successBar"}>500zł</li>
-                    </ul>
+                        <ul className="progressBar">
+                            <li className={this.state.qNumber >= 12 && "successBar"} style={{color: "gold"}}>1 000 000zł</li>
+                            <li className={this.state.qNumber >= 11 && "successBar"}>500 000zł</li>
+                            <li className={this.state.qNumber >= 10 && "successBar"}>250 000zł</li>
+                            <li className={this.state.qNumber >= 9 && "successBar"}>125 000zł</li>
+                            <li className={this.state.qNumber >= 8 && "successBar"}>75 000zł</li>
+                            <li className={this.state.qNumber >= 7 && "successBar"} style={{color: "gold"}}>40 000zł</li>
+                            <li className={this.state.qNumber >= 6 && "successBar"}>20 000zł</li>
+                            <li className={this.state.qNumber >= 5 && "successBar"}>10 000zł</li>
+                            <li className={this.state.qNumber >= 4 && "successBar"}>5 000zł</li>
+                            <li className={this.state.qNumber >= 3 && "successBar"}>2 000zł</li>
+                            <li className={this.state.qNumber >= 2 && "successBar"} style={{color: "gold"}}>1 000zł</li>
+                            <li className={this.state.qNumber >= 1 && "successBar"}>500zł</li>
+                        </ul>
+                    </section>
                 </section>
                 <footer> </footer>
 
@@ -420,6 +429,7 @@ class Game extends Component {
 }
 
 const Result = (props) => {
+    MainThemePlay().stop();
     setTimeout(function () {
         ClosingThemePlay().play();
         ClosingThemePlay().fade(0.0, 0.5, 12000);

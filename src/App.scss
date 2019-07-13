@@ -27,6 +27,7 @@ $mainColor: #BCBDC4;
   background: rgba(7,32,60, 0.6);
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
 
@@ -72,6 +73,27 @@ $mainColor: #BCBDC4;
 }
 
 
+.buttonInfo {
+  background: transparent;
+  border: none;
+}
+
+.infoIco {
+  width: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 6px;
+  border: 0.2px solid $mainColor;
+}
+
+.info {
+  position: absolute;
+  right: 30px;
+  bottom: 20px;
+}
+
+
+
+
 //GAME PAGE-------------------------------------------------------------
 
 $successColor: #C19B28;
@@ -82,6 +104,13 @@ $successColor: #C19B28;
   display: flex;
   justify-content: space-between;
   background-image: url("./images/background.jpg");
+}
+
+.gameSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 20px;
 }
 
 .logoTimer {
@@ -182,7 +211,7 @@ $w: 2;
   font-family: Helvetica;
   color: #fff;
   z-index: 2;
-  animation: fadeout .5s (30 + 1)+s 1 linear;
+  animation: fadeout .5s (20 + 1)+s 1 linear;
   animation-fill-mode: forwards;
   opacity: 0.9;
 }
@@ -208,7 +237,7 @@ $w: 2;
 
 
 
-.gameSection {
+.questionSection {
   width: 70%;
   display: flex;
   align-items: center;
@@ -250,8 +279,7 @@ $w: 2;
 .progressBar {
   list-style: none;
   font-size: 12pt;
-  margin-top: 20px;
-  margin-right: 55px;
+  margin-left: 55px;
 }
 .progressBar li {
   border-left: 0.2em solid $mainColor;
@@ -287,6 +315,7 @@ li.successBar::before {
 .lifelineIco {
   width: 90px;
   margin-bottom: 30px;
+  margin-left: 10px;
 }
 
 
@@ -298,7 +327,7 @@ li.successBar::before {
 .friendBubble {
   transition: 250ms;
   position: fixed;
-  transform: translateY(700px);
+  transform: translateY(1000px);
   top: 0;
   height: 250px;
   width: 170px;
@@ -327,7 +356,7 @@ li.successBar::before {
 .publicBubble {
   transition: 250ms;
   position: fixed;
-  transform: translateY(700px);
+  transform: translateY(1000px);
   top: 0;
   height: 250px;
   width: 170px;
