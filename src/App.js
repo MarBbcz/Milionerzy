@@ -61,7 +61,7 @@ const Home = () => {
                                 <h1>Jak grać?</h1>
                             </div>
                             <div className="modal-body">
-                                <div className="infoBox" style={{width: "55%"}}>
+                                <div className="infoBox" style={{width: "54%"}}>
                                     <div className="infoImg">
                                         <img src={lifelines} alt="" className="lifelinesImg"/>
                                         <div className="infoLLBg"> </div>
@@ -73,7 +73,7 @@ const Home = () => {
                                     </div>
 
                                 </div>
-                                <div className="infoBox" style={{width: "45%"}}>
+                                <div className="infoBox" style={{width: "46%"}}>
                                     <div className="infoText">
                                         <h3>Timer</h3>
                                         <hr/>
