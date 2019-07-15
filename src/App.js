@@ -16,6 +16,8 @@ import winningBoard from "./images/winningBoard.jpg";
 import {MainThemePlay, CorrectAnswerPlay, WrongAnswerPlay, FinalAnswerPlay, StartThemePlay, ClosingThemePlay, FiftyFiftyThemePlay} from "./player.js";
 import {questions} from "./database/questions.json";
 import info from "./images/info.png";
+import lifelines from "./images/lifelines.png";
+import timer from "./images/timer.png";
 
 const Home = () => {
     const StartThemeAudio = StartThemePlay();
@@ -24,6 +26,16 @@ const Home = () => {
 
     function handleOnClick() {
         return StartThemeAudio.stop();
+    }
+    
+    function showModal() {
+        const modal = document.querySelector("#modal-name");
+        modal.style.display = "flex";
+    }
+
+    function closeModal() {
+        const modal = document.querySelector("#modal-name");
+        modal.style.display = "none";
     }
 
     return (
@@ -39,7 +51,41 @@ const Home = () => {
                 </section>
                 <footer>
                    <div className="info">
-                        <button className="buttonInfo" onClick="showModal"><img src={info} alt="" className="infoIco"/></button>
+                        <a href="#" className="infoBtn" data-modal="modal-name" onClick={showModal}><img src={info} alt="" className="infoIco"/></a>
+                    </div>
+                    <div className="modal" id="modal-name">
+                        <div className="modal-sandbox"></div>
+                        <div className="modal-box">
+                            <div className="modal-header">
+                                <div className="close-modal" onClick={closeModal}>&#10006;</div>
+                                <h1>Jak grać?</h1>
+                            </div>
+                            <div className="modal-body">
+                                <div className="infoBox" style={{width: "55%"}}>
+                                    <div className="infoImg">
+                                        <img src={lifelines} alt="" className="lifelinesImg"/>
+                                        <div className="infoLLBg"> </div>
+                                    </div>
+                                    <div className="infoText">
+                                        <h3>Koła ratunkowe</h3>
+                                        <hr/>
+                                        <p>Przysługują ci trzy koła ratunkowe: pół na pół, pytanie do publiczności i telefon do przyjaciela. Korzystaj z nich mądrze, bo każde może być wykorzystane tylko raz. Pamiętaj, że twoi przyjaciele nie są wszystkowiedzący i czasem też zdarza im się mylić. Im wyższa trudność pytania, tym częściej głosy publiczności będą wyrównane.</p>
+                                    </div>
+
+                                </div>
+                                <div className="infoBox" style={{width: "45%"}}>
+                                    <div className="infoText">
+                                        <h3>Timer</h3>
+                                        <hr/>
+                                        <p>Pamiętaj o czasie! Aby nie było zbyt łatwo, masz dokładnie 30 sekund na udzielenie poprawnej odpowiedzi. Kiedy licznik zrówna się z zerem, twoja gra dobiegnie końca i przyjdzie ci zadowolić się kwotą gwarantowaną.</p>
+                                    </div>
+                                    <div className="infoImg">
+                                        <img src={timer} alt="" className="timerImg"/>
+                                        <div className="infoTimerBg"> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </footer>
             </div>
